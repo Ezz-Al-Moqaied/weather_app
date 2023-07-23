@@ -16,13 +16,7 @@ class WeatherModel {
   late List weatherData;
 
   Future<void> getCityLocationWeather(String cityName) async {
-    // WeatherFactory wf = WeatherFactory(kApiKey);
-    // Weather w = await wf.currentWeatherByCityName(cityName);
-    // temp = w.temperature as double;
-    Map<String, dynamic> weatherInfo = await NetworkHelper(
-            url:
-                "https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$kApiKey&units=metric")
-        .getData();
+    Map<String, dynamic> weatherInfo = await NetworkHelper(url: "https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$kApiKey&units=metric").getData();
     temp = weatherInfo['main']['temp'];
     weatherId = weatherInfo['weather'][0]['id'];
     cityName = weatherInfo['name'];
